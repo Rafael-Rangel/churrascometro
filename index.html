@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Churrascometro - Calculadora de Compras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔥 Churrascometro</h1>
+      <p>Calcule quanto comprar para o seu churrasco</p>
+    </header>
+
+    <form id="formulario-churrasco">
+
+      <!-- Convidados -->
+      <section class="card">
+        <h2>👥 Quantas pessoas vão?</h2>
+        <div class="grid-tres">
+          <div class="campo">
+            <label for="qtd-homens">Homens</label>
+            <input type="number" id="qtd-homens" min="0" value="0">
+          </div>
+          <div class="campo">
+            <label for="qtd-mulheres">Mulheres</label>
+            <input type="number" id="qtd-mulheres" min="0" value="0">
+          </div>
+          <div class="campo">
+            <label for="qtd-criancas">Crianças</label>
+            <input type="number" id="qtd-criancas" min="0" value="0">
+          </div>
+        </div>
+        <p class="dica">Total: <strong id="total-pessoas">0</strong> pessoas</p>
+      </section>
+
+      <!-- Duração -->
+      <section class="card">
+        <h2>⏱ Duração do churrasco</h2>
+        <div class="campo">
+          <label for="duracao-horas">Quantas horas vai durar?</label>
+          <select id="duracao-horas">
+            <option value="2">2 horas</option>
+            <option value="4" selected>4 horas</option>
+            <option value="6">6 horas</option>
+            <option value="8">8 horas ou mais</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Carnes -->
+      <section class="card">
+        <h2>🥩 Quais carnes você quer?</h2>
+        <p class="dica">Marque os tipos de carne que vai servir</p>
+        <div class="grid-checkboxes" id="lista-carnes">
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="picanha" checked> Picanha Black Friboi
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="linguica" checked> Linguiça
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="costela"> Costela Defumada
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="frango"> Frango
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="alcatra"> Alcatra
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="contrafile"> Contrafilé
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="cupim"> Cupim
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="carne" value="coracao"> Coração de frango
+          </label>
+        </div>
+      </section>
+
+      <!-- Bebidas -->
+      <section class="card">
+        <h2>🍺 Quais bebidas terá?</h2>
+        <p class="dica">Marque as bebidas que vai oferecer</p>
+        <div class="grid-checkboxes" id="lista-bebidas">
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="cerveja" checked> Cerveja
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="refrigerante" checked> Refrigerante
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="suco" checked> Suco
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="agua" checked> Água
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="vinho"> Vinho
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="bebida" value="destilado"> Whisky / Vodka
+          </label>
+        </div>
+      </section>
+
+      <!-- Extras -->
+      <section class="card">
+        <h2>🍞 Acompanhamentos</h2>
+        <div class="grid-checkboxes">
+          <label class="checkbox-item">
+            <input type="checkbox" name="extra" value="pao-alho" checked> Pão de alho
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="extra" value="farofa" checked> Farofa
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="extra" value="vinagrete" checked> Vinagrete / salada
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="extra" value="queijo-coalho"> Queijo coalho
+          </label>
+        </div>
+      </section>
+
+      <button type="submit" class="btn btn-primario">🛒 Calcular lista de compras</button>
+    </form>
+
+    <!-- Resultado -->
+    <section class="card resultado oculto" id="secao-resultado">
+      <h2>🛒 Sua lista de compras</h2>
+      <p class="resumo-evento" id="resumo-evento"></p>
+
+      <div class="bloco-resultado">
+        <h3>🥩 Carnes</h3>
+        <ul id="lista-compras-carnes" class="lista-compras"></ul>
+        <p class="total-secao">Total de carne: <strong id="total-carne">0 kg</strong></p>
+      </div>
+
+      <div class="bloco-resultado">
+        <h3>🍺 Bebidas</h3>
+        <ul id="lista-compras-bebidas" class="lista-compras"></ul>
+      </div>
+
+      <div class="bloco-resultado">
+        <h3>🍞 Acompanhamentos e outros</h3>
+        <ul id="lista-compras-extras" class="lista-compras"></ul>
+      </div>
+
+      <div class="aviso">
+        💡 Valores estimados para um churrasco completo. Ajuste conforme o apetite do pessoal!
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
